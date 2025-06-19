@@ -28,21 +28,22 @@
 <script src="https://player.vimeo.com/api/player.js"></script>
 <section id="sobre" style="padding: 20px; max-width: 1200px; margin: 0 auto;">
     <h2 class="section-title hidden" style="text-align: center; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 30px;">
-         Projeto Vivo Contagem
+         PROJETO VIVO CONTAGEM
     </h2>
     
     <div class="sobre-content" style="display: flex; flex-direction: column; gap: 30px;">
         <div class="text-content" style="order: 2;">
-            <p class="hidden" style="font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.6; margin-bottom: 20px;">
-                Os Parques Urbanos Fernão Dias, Gentil Diniz e Sapucaias constituem a mais recente geração de áreas verdes públicas, meticulosamente projetadas para fomentar qualidade de vida, sustentabilidade ambiental e integração sociocomunitária.
-            </p>
-            <p class="hidden delay-1" style="font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.6; margin-bottom: 20px;">
-                Cada unidade foi concebida mediante criterioso planejamento urbano, atendendo às particularidades de seu entorno, preservando uma identidade visual coesa que materializa os princípios de preservação ecológica e acessibilidade universal.
-            </p>
-            <p class="hidden delay-2" style="font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.6;">
-                Estes empreendimentos sintetizam paisagismo com espécies nativas, infraestrutura ambientalmente sustentável e design urbano inovador, resultando em espaços públicos que harmonizam funcionalidade urbana e valor estético.
-            </p>
-        </div>
+    <p class="hidden" style="font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.6; margin-bottom: 20px;">
+        O projeto <strong>Vivo Contagem</strong> é uma série audiovisual que convida o público a conhecer os parques Fernão Dias, Gentil Diniz e Sapucaias sob novos olhares.
+    </p>
+    <p class="hidden delay-1" style="font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.6; margin-bottom: 20px;">
+        Com apresentação de Rafa Saber e Vitor Lebre, a proposta alia cultura, turismo e memória ambiental em vídeos com linguagem cinematográfica e captação de imagens por drones e equipamentos profissionais.
+    </p>
+    <p class="hidden delay-2" style="font-size: clamp(1rem, 1.2vw, 1.1rem); line-height: 1.6;">
+        Cada episódio revela histórias, curiosidades, sons e belezas naturais dos parques, valorizando o patrimônio ecológico e incentivando a visitação consciente dos espaços públicos de Contagem.
+    </p>
+</div>
+
         
         <div class="sobre-img hidden delay-1" style="order: 1; width: 100%; max-width: 600px; margin: 0 auto; border-radius: 8px; overflow: hidden;">
             <img src="{% static 'img/rafa.JPG' %}" alt="Vista aérea dos Parques Urbanos" 
@@ -52,51 +53,51 @@
 </section> <!-- Esta linha inicial pode ser removida se não estiver fechando uma seção anterior -->
 
 <section id="parques">
-  <h2 class="section-title hidden">Nossos Parques</h2>
+  <h2 class="section-title hidden">NOSSOS PARQUES</h2>
   <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;" class="hidden">
     Conheça em detalhes cada um destes espaços urbanos transformadores.
   </p>
 
   <div class="parques-grid">
 
-    <!-- Parque Fernão Dias -->
     <div class="parque-card hidden delay-1">
-      <div class="card-img">
-        <a href="{% url 'base:parque_1' %}">
-          <img src="{% static 'img/parques.jpg' %}" alt="Parque Fernão Dias">
-        </a>
-      </div>
-      <div class="card-content">
-        <h3>Parque Fernão Dias</h3>
-        <p class="localizacao">
-          <i class="fas fa-map-marker-alt"></i>
-          Bairro Camilo Prates, Contagem - MG
-        </p>
-        <p>Parque linear localizado ao longo da avenida Fernão Dias, com áreas verdes, pistas para caminhada e espaço para lazer e convivência comunitária.</p>
+  <div class="card-img">
+    <a href="{% url 'base:parque_1' %}">
+      <img src="{% static 'img/parques.jpg' %}" alt="Parque Fernão Dias">
+    </a>
+  </div>
+  <div class="card-content">
+    <h3>Parque Fernão Dias</h3>
+    <p class="localizacao">
+      <i class="fas fa-map-marker-alt"></i>
+      Bairro Camilo Prates, Contagem - MG
+    </p>
+    <p>Parque linear sob gestão do IEF, localizado ao longo da avenida Fernão Dias, com áreas verdes, pistas para caminhada e espaço para lazer e convivência comunitária.</p>
 
-        <div class="detalhes">
-          <span class="detalhe-item">
-            <i class="fas fa-ruler-combined"></i>
-            Aproximadamente 10 hectares
-          </span>
-          <span class="detalhe-item">
-            <i class="fas fa-tree"></i>
-            Diversas árvores nativas e exóticas
-          </span>
-        </div>
-
-        <div class="detalhes">
-          <span class="detalhe-item">
-            <i class="fas fa-walking"></i>
-            Trilhas para caminhada e corrida
-          </span>
-          <span class="detalhe-item">
-            <i class="fas fa-bicycle"></i>
-            Ciclovia integrada ao parque
-          </span>
-        </div>
-      </div>
+    <div class="detalhes">
+      <span class="detalhe-item">
+        <i class="fas fa-ruler-combined"></i>
+        Aproximadamente 98,5 hectares
+      </span>
+     <span class="detalhe-item">
+  <i class="fas fa-theater-masks"></i>
+  Atividades culturais
+</span>
     </div>
+
+    <div class="detalhes">
+      <span class="detalhe-item">
+        <i class="fas fa-walking"></i>
+        7,49 km de trilhas ecológicas
+      </span>
+     <span class="detalhe-item">
+  <i class="fas fa-hiking"></i>
+  Trilha ecológica
+</span>
+
+    </div>
+  </div>
+</div>
 
     <!-- Parque Gentil Diniz -->
     <div class="parque-card hidden delay-2">
@@ -117,11 +118,12 @@
           <span class="detalhe-item">
             <i class="fas fa-ruler-combined"></i>
             Cerca de 7 hectares
-          </span>
           <span class="detalhe-item">
-            <i class="fas fa-tree"></i>
-            Jardins e áreas arborizadas
-          </span>
+  <i class="fas fa-landmark"></i>
+  Casarão antigo para exposição de artes
+</span>
+
+         
         </div>
 
         <div class="detalhes">
@@ -130,8 +132,8 @@
             Lago artificial para contemplação
           </span>
           <span class="detalhe-item">
-            <i class="fas fa-utensils"></i>
-            Quiosques e áreas de descanso
+            <i class="fas fa-book"></i>
+            Centro de educação ambiental
           </span>
         </div>
       </div>
@@ -158,8 +160,8 @@
             Aproximadamente 15 hectares
           </span>
           <span class="detalhe-item">
-            <i class="fas fa-tree"></i>
-            Mata nativa preservada
+            <i class="fas fa-water"></i>
+            Lago artificial
           </span>
         </div>
 
@@ -169,8 +171,8 @@
             Trilhas ecológicas para caminhada
           </span>
           <span class="detalhe-item">
-            <i class="fas fa-book"></i>
-            Centro de educação ambiental
+            <i class="fas fa-utensils"></i>
+            Quiosques e áreas de descanso
           </span>
         </div>
       </div>
@@ -182,7 +184,7 @@
 <section id="contato">
   <div class="contato-container">
 
-    <h2 class="section-title hidden">Visite os Parques</h2>
+    <h2 class="section-title hidden">VISITE OS PARQUES</h2>
       <h3 style="margin-top: 0;">Informações para Visitação</h3>
       <p>Venha conhecer nossos parques! Eles estão abertos todos os dias com entrada gratuita. Aproveite a natureza, participe das programações especiais e desfrute de momentos inesquecíveis com sua família e amigos.</p>
 
