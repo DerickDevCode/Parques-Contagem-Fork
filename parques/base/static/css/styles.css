@@ -60,13 +60,10 @@ img {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 0; /* largura zero remove a linha */
+  width: 0;
   height: 3px;
-  background-color: transparent; /* transparente também remove a linha */
+  background-color: transparent;
 }
-
-
-
 
 /* Header */
 .header {
@@ -284,6 +281,43 @@ img {
   transform: scale(1.05);
 }
 
+/* Carrossel Galeria */
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-fade .carousel-item.active {
+  opacity: 1;
+}
+
+#carouselGaleria {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#carouselGaleria .gallery-img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+#carouselGaleria:hover .gallery-img {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  #carouselGaleria {
+    max-width: 90%;
+  }
+
+  #carouselGaleria .gallery-img {
+    max-height: 250px;
+  }
+}
+
 /* Activities Section */
 .park-activities {
   padding: 4rem 0;
@@ -438,4 +472,45 @@ img {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-fade .carousel-item.active {
+    opacity: 1;
+}
+
+#carouselGaleria {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#carouselGaleria .gallery-img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+#carouselGaleria:hover .gallery-img {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    #carouselGaleria {
+        max-width: 95%;
+    }
+
+    #carouselGaleria .gallery-img {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    #carouselGaleria .gallery-img {
+        max-height: 300px;
+    }
 }
