@@ -123,46 +123,68 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-# configuração de ambiente de desenvolvimento
-
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
-AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default=None)
+
 COLLECTFAST_ENABLED = False
 
-
 # STORAGE CONFIGURATION IN S3 AWS
-# ------------------------------------------------------------------------------
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default=None)
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
-        "OPTIONS": {
-            "access_key": config("AWS_ACCESS_KEY_ID"),
-            "secret_key": config("AWS_SECRET_ACCESS_KEY"),
-            "bucket_name": config("AWS_STORAGE_BUCKET_NAME"),
-            "default_acl": "private",
-            "object_parameters": {
-                "CacheControl": "max-age=86400",
+if AWS_ACCESS_KEY_ID:
+    AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+    AWS_DEFAULT_ACL = config("AWS_DEFAULT_ACL", default="public-read")
+    AWS_S3_OBJECT_PARAMETERS = config("AWS_S3_OBJECT_PARAMETERS", default="{}")
+
+    # Static Assets
+    STATIC_S3_PATH = "static"
+    STATIC_ROOT = f"/{STATIC_S3_PATH}/"
+    STATIC_URL = f'//{AWS_STORAGE_BUCKET_NAME}.s3.sa-east-1.amazonaws.com//{STATIC_S3_PATH}/'
+
+    # Upload Media Folder
+    DEFAULT_S3_PATH = "media"
+    MEDIA_ROOT = f"/{DEFAULT_S3_PATH}/"
+    MEDIA_URL = f'//{AWS_STORAGE_BUCKET_NAME}.s3.sa-east-1.amazonaws.com//{DEFAULT_S3_PATH}/'
+
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+            "OPTIONS": {
+                "access_key": AWS_ACCESS_KEY_ID,
+                "secret_key": AWS_SECRET_ACCESS_KEY,
+                "bucket_name": AWS_STORAGE_BUCKET_NAME,
+                "default_acl": AWS_DEFAULT_ACL,
+                "object_parameters": AWS_S3_OBJECT_PARAMETERS,
+                "location": DEFAULT_S3_PATH,
             },
-            "location": "static",  # pasta para arquivos estáticos
         },
-    },
-}
+        "staticfiles": {
+            "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+            "OPTIONS": {
+                "access_key": AWS_ACCESS_KEY_ID,
+                "secret_key": AWS_SECRET_ACCESS_KEY,
+                "bucket_name": AWS_STORAGE_BUCKET_NAME,
+                "default_acl": AWS_DEFAULT_ACL,
+                "object_parameters": AWS_S3_OBJECT_PARAMETERS,
+                "location": STATIC_S3_PATH,
+            },
+        },
+    }
 
-STATICFILES_STORAGE = "staticfiles"
-DEFAULT_FILE_STORAGE = "media"
+    COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
+    COLLECTFAST_ENABLED = True
+    AWS_PRELOAD_METADATA = True
+    AWS_AUTO_CREATE_BUCKET = False
+    INSTALLED_APPS.append("storages")
+
 # Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
 
 SENTRY_DSN = config("SENTRY_DSN", default=None)
 if SENTRY_DSN:
